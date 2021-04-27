@@ -166,7 +166,7 @@ class SiteFrontPage(TestBase):
     def test_archive_stories(self):
         """ Verify that the archived stories section contains all newsposts that are not the cover story or top stories
         """
-        all_stories = NewsPost.objects.all().order_by('-publish_date')
+        all_stories = NewsPost.objects.all().order_by('publish_date')
         cover_story = all_stories[7]
         cover_story.is_cover_story = True
         cover_story.save()
@@ -192,7 +192,7 @@ class SiteFrontPage(TestBase):
         front_page_html = BeautifulSoup(front_page.content, 'html.parser')
         teaser_divs = front_page_html.find_all('div', {'class': 'newspost-teaser'})
         for teaser in teaser_divs:
-            self.assertNotIn('<p>', teaser.text)
+            self.assertNotIn(teaser.text)
 
 
 class CmsPage(TestBase):
