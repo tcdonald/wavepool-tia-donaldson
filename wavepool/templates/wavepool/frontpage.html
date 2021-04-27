@@ -6,15 +6,17 @@
 		<div class="col-md-4">
 			<div id="coverstory" class="row" data-newspost-id="{{cover_story.pk}}">
 				<h2>Cover story</h2>
+				{% for cover_story in context %}
 				<div class="title">
 					<span class="pubdate">{{cover_story.publish_date}}</span>
 					<a href="{{ cover_story.url }}">{{ cover_story.title }}</a>
 				</div>
 				<div><img src="media/image/placeholder-img.jpg"  width="300" height="175" /></div>
 				<div class="newspost-teaser" data-newspost-id="{{cover_story.pk}}">
-					{{ cover_story.teaser }} ...
+					<p>{{ cover_story.teaser }}</p> 
 				</div>
 			</div>
+			{%endfor%}
 		</div>
 		<div id="topstories" class="col-md-8">
 			<div class="row"><h2>Top Stories</h2></div>
@@ -24,7 +26,7 @@
 						<span class="pubdate">{{newspost.publish_date}}</span>
 						<div class="frontpage-archive_link"><a href="{{ newspost.url }}">{{ newspost.title }}</a></div>
 						<div class="newspost-teaser" data-story_id="{{newspost.pk}}">
-							{{ newspost.teaser  }} ...
+							<p>{{ newspost.teaser  }} </p>
 						</div>
 					<hr />
 					</div>
